@@ -2,7 +2,7 @@
 //# -> identifies element's by it's ID
 //. -> identifies element by it's CLASS
 
-/*
+
 1. document.getElementById("count-el").innerText;
 
 2. document.getElementById("count-el").textContent;  :Using .textContent because .innerText can skip human unreadable elements e.g. <space>
@@ -22,12 +22,12 @@ for(let i = 0; i < myLeads.length; i++) {           //Code 1.1
 }
 
 7. document.createElement() :Used to create DOM elements
-// for(let i = 0; i < myLeads.length; i++) {           //Code 1.2: Same as 1.1 with different method
-//     //Above code can be broken down into 1)Create element 2)set text content 3)append to ul
-//     const li = document.createElement("li");
-//     li.textContent = myLeads[i];
-//     ulEL.append(li);
-// }
+for(let i = 0; i < myLeads.length; i++) {           //Code 1.2: Same as 1.1 with different method
+    //Above code can be broken down into 1)Create element 2)set text content 3)append to ul
+    const li = document.createElement("li");
+    li.textContent = myLeads[i];
+    ulEL.append(li);
+}
 
 8. JSON.parse()     :Turns a string into an array
 let myLeads = `["abc"]`;
@@ -41,4 +41,3 @@ localStorage.setItem("myLeadsKey", JSON.stringify(myLeads));
 
 11. localStorage.getItem()      :To get the string value store against a key
 localStorage.getItem("myLeadsKey")
-*/

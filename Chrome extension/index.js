@@ -3,28 +3,23 @@ let myLeads = [];
 const inputBtn = document.getElementById("input-btn");
 const inputEl = document.getElementById("input-el");
 const ulEL = document.getElementById("ul-el");
-const pEl = document.getElementById("p-el");
-const hEl = document.getElementById("h-el");
+const deleteBtn = document.getElementById("delete-btn");
+const tabBtn = document.getElementById("tab-btn")
 
-localStorage.setItem("myLeads", "www.examplelead.com");
+const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
 
-inputBtn.addEventListener("click", function() {
-    myLeads.push(inputEl.value);
-    inputEl.value = "";
-    localStorage.setItem("myLeads", JSON.stringify(myLeads));
-    renderLeads();
 
-    console.log(localStorage.getItem("myLeads"));
-})
+if(leadsFromLocalStorage) {
+    myLeads = leadsFromLocalStorage
+    render(myLeads);
+}
 
-function renderLeads() {
-    let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
+function render(leads) {
     let listItems = "";
-    for(let i = 0; i < leadsFromLocalStorage.length; i++) {
-        // listItems += "<li><a target='_blank' href='" + myLeads[i] +"'>" + myLeads[i] + "</a></li>"
+    for(let i = 0; i < leads.length; i++) {
         listItems += `
                         <li>
-                            <a target="_blank" href="${ leadsFromLocalStorage[i]}">${ leadsFromLocalStorage[i] }</a>
+                            <a target="_blank" href="${ leads[i] }">${ leads[i] }</a>
                         </li>
                     `
     }
@@ -32,19 +27,27 @@ function renderLeads() {
 }
 
 
+tabBtn.addEventListener("click", function() {
+    console.log("SAVE TAB clicked");
+    
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        myLeads.push(tabs[0].url);
+        localStorage.setItem("myLeads", JSON.stringify(myLeads))
+        render(myLeads);
+    });
+})
 
+deleteBtn.addEventListener("dblclick", function() {
+    console.log("Leads cleared");
+    localStorage.clear();
+    myLeads = [];
+    render(myLeads);
+})
 
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value);
+    inputEl.value = "";
+    localStorage.setItem("myLeads", JSON.stringify(myLeads));
+    render(myLeads);
+})
 
-/*------------------------------------------------------------------------------------------------------------*/
-// for(let i = 0; i < myLeads.length; i++) {           //Code 1.1
-//     ulEL.innerHTML += "<li>" + myLeads[i] + "</li>";
-// }
-
-
-// for(let i = 0; i < myLeads.length; i++) {           //Code 1.2: Same as 1.1 with different method
-//     //Above code can be broken down into 1)Create element 2)set text content 3)append to ul
-//     const li = document.createElement("li");
-//     li.textContent = myLeads[i];
-//     ulEL.append(li);
-// }
-/*--------------------------------------------------------------------------------------------------------------*/
