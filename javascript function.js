@@ -2,7 +2,7 @@
 //# -> identifies element's by it's ID
 //. -> identifies element by it's CLASS
 
-
+/*
 1. document.getElementById("count-el").innerText;
 
 2. document.getElementById("count-el").textContent;  :Using .textContent because .innerText can skip human unreadable elements e.g. <space>
@@ -41,3 +41,4 @@ localStorage.setItem("myLeadsKey", JSON.stringify(myLeads));
 
 11. localStorage.getItem()      :To get the string value store against a key
 localStorage.getItem("myLeadsKey")
+*/
