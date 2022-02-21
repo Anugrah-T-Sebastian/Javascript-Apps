@@ -71,3 +71,9 @@ links.classList.remove("show-links");
 
 20. toggle()    //:Used to add toggle functionality
 links.classList.toggle("show-links");
+
+21. parentElement       //:Used to access the parent element of a DOM element
+btn.addEventListener("click", function(e) {
+            const item = e.currentTarget.parentElement;        //Go to parent of the button i.e. article section
+            console.log(item);
+        })
