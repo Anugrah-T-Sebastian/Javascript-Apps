@@ -62,3 +62,12 @@ const styles = e.currentTarget.classList;
 
 17. contains()  //:Checks if a string is present in the given list
 styles.contains('decrease');
+
+18. add()   //:Used to add an item to a list. Pass in the item that you want to add
+links.classList.add("show-links");
+
+19. remove()    //:Used to remove an item from a list. Pass in the item that you want to remove
+links.classList.remove("show-links");
+
+20. toggle()    //:Used to add toggle functionality
+links.classList.toggle("show-links");
