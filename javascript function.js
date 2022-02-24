@@ -76,4 +76,41 @@ links.classList.toggle("show-links");
 btn.addEventListener("click", function(e) {
             const item = e.currentTarget.parentElement;        //Go to parent of the button i.e. article section
             console.log(item);
-        })
+})
+
+22. reduce()    //:Used to get unique items from an array. It takes 2 arguments (values, item) where (values) is a pre-existing array and (item) are items of the array being traversed. It always returns (values)
+const categories = menuItemArray.reduce(function(values, item) {
+    if(!values.includes(item.category)) {
+      values.push(item.category);
+    }
+    return values;
+}, ['all'])
+
+23. map()   //:It is used to traverse over the elements of an array. It takes 1 argument (item) which are the elements is the array
+let categoryBtns = categories.map(function(category) {
+    const btnItems = `
+                      <button class="filter-btn" type="button" data-id="${category}">${category}</button>
+                      `
+    return btnItems;
+})
+
+24. join()  //:It is used to join the strings present in a array of strings into a single string. It takes in the delimited required as its argument. If no argument is passed, then (,) is used as default delimiter
+categoryBtns = categoryBtns.join("");
+
+25. Date()  //:It is used to get Date-Time values
+date.textContent = new Date().getFullYear()
+
+26. getBoundingClientRect() //:Element.getBoundingClientRect() method returns the size of an element and its position relative to the viewport. It returns an object with many attribute
+const linksHeight = links.getBoundingClientRect().height;
+
+27. pageYOffset     //:pageYOffset is a read - only window property that returns the number of pixels the document has been scrolled vertically.
+const scrollHeight = this.window.pageYOffset;
+
+28. getAttribute()      //:Get the value inside an attribute of an element
+const id = e.currentTarget.getAttribute("href")
+
+29. slice()     //:slice extracts a section of a string without modifying original string
+const id = e.currentTarget.getAttribute("href").slice(1);
+
+30. offsetTop   //:A Number, representing the top position of the element, in pixels
+let position = element.offsetTop
