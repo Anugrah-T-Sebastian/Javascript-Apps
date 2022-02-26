@@ -18,7 +18,24 @@ const result = document.querySelector(".lorem-text");
 
 form.addEventListener("submit", (e) => {
     e.preventDefault(); //Because default behaviour of a form is to submit itself to the server. So if deafult is not prevented, it does show hello in console
-    console.log("hello");
+    // console.log("hello");
     const value = parseInt(amounnt.value);        //amount.value returns a string
-    console.log(value);
+    const random = Math.floor(Math.random() * 9);
+
+    if(isNaN(value) || value <= 0 || value > 9) {    //Invalid inputs case
+        result.innerHTML = `<p class="result">
+                            ${text[random]}
+                            </p>`;
+    }
+    else {
+        let tempText = text.slice(0, value);
+        tempText = tempText.map((item) => {
+            let string = `<p class="result">
+                           ${item}
+                           </p>`;
+            return string;
+        })
+        tempText = tempText.join("");
+        result.innerHTML = tempText;
+    }
 });
